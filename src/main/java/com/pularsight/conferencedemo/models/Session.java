@@ -13,7 +13,7 @@ public class Session {
     private String session_name;
     private String session_description;
     private Integer session_length;
-    @ManyToMany //Setting up a many to many relationship and you have a mapping JoinTable in your database table to link the two tables(sessions and speakers)
+    @ManyToMany()//Setting up a many to many relationship and you have a mapping JoinTable in your database table to link the two tables(sessions and speakers)
     @JoinTable( //Defines the JoinTable nad the foreign key columns. This is the table that connects the two entities (sessions and speakers) together in a many to many relationship (session_speakers) and the foreign key columns are session_id and speaker_id respectively
             name = "session_speakers",
             joinColumns = @JoinColumn(name = "session_id"),

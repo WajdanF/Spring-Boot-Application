@@ -1,5 +1,7 @@
 package com.pularsight.conferencedemo.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,7 +9,6 @@ import java.util.List;
 public class Speaker {
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
-    private Long id;
 
     private Long speaker_id;
     private String first_name;
@@ -16,15 +17,30 @@ public class Speaker {
     private String company;
     private String speaker_bio;
 
-    @ManyToMany
-    @JoinTable(name = "speaker_session",
-            joinColumns = @JoinColumn(name = "speaker_id"),
-            inverseJoinColumns = @JoinColumn(name = "session_id"))
-
+    @Lob // large object as binary data can get very large so we use this annotation to help JPA handle it
+    @Type(type = "org.hibernate.type.BinaryType")//Needed for hibernate deal with binary data (hibernate is the JPA implementation under the cover)
+    private byte[] speaker_photo;
+    @ManyToMany(mappedBy = "speakers")
     private List<Session> sessions;
 
     public Speaker(){
 
+    }
+
+    public byte[] getSpeaker_photo() {
+        return speaker_photo;
+    }
+
+    public void setSpeaker_photo(byte[] speaker_photo) {
+        this.speaker_photo = speaker_photo;
+    }
+
+    public List<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(List<Session> sessions) {
+        this.sessions = sessions;
     }
 
     public Long getSpeaker_id() {
