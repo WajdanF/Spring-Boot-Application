@@ -1,9 +1,13 @@
 package com.pularsight.conferencedemo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "sesssions") //The @Entity annotation specifies that the class is an entity and is mapped to a database table
+@Entity(name = "sessions") //The @Entity annotation specifies that the class is an entity and is mapped to a database table
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" }) //The @JsonIgnoreProperties annotation specifies that the specified properties should be ignored when converting the object to JSON.
 public class Session {
     @Id //The @Id annotation specifies the primary key of the entity
     @GeneratedValue(strategy = GenerationType.IDENTITY) //The @GeneratedValue annotation specifies the generation strategy for the primary key of the entity (IDENTITY) - the primary key is auto-incremented by the database

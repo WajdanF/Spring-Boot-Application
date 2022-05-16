@@ -1,11 +1,15 @@
 package com.pularsight.conferencedemo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "speakers") // name of the table in the database (speakers)
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" }) //The @JsonIgnoreProperties annotation specifies that the specified properties should be ignored when converting the object to JSON.
+
 public class Speaker {
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
@@ -21,6 +25,7 @@ public class Speaker {
     @Type(type = "org.hibernate.type.BinaryType")//Needed for hibernate deal with binary data (hibernate is the JPA implementation under the cover)
     private byte[] speaker_photo;
     @ManyToMany(mappedBy = "speakers")
+    @JsonIgnore // this is to avoid infinite loop when serializing the object to JSON because of the many to many relationship between speakers and sessions
     private List<Session> sessions;
 
     public Speaker(){

@@ -70,3 +70,12 @@ CREATE TABLE attendees ( attendee_id SERIAL PRIMARY KEY, first_name varchar(30) 
 2022-05-13 12:18:16 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ATTENDEES" already exists; SQL statement:
 CREATE TABLE attendees ( attendee_id SERIAL PRIMARY KEY, first_name varchar(30) NOT NULL, last_name varchar(30) NOT NULL, title varchar(40) NULL, company varchar(50) NULL, email varchar(80) NOT NULL, phone_number varchar(20) NULL ) [42101-200]
+2022-05-16 14:35:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SESSSIONS" not found; SQL statement:
+select session0_.session_id as session_1_1_, session0_.session_description as session_2_1_, session0_.session_length as session_3_1_, session0_.session_name as session_4_1_ from sesssions session0_ [42102-200]
+2022-05-16 14:48:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SESSSIONS" not found; SQL statement:
+select session0_.session_id as session_1_1_, session0_.session_description as session_2_1_, session0_.session_length as session_3_1_, session0_.session_name as session_4_1_ from sesssions session0_ [42102-200]
+2022-05-16 14:49:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SESSSIONS" not found; SQL statement:
+select session0_.session_id as session_1_1_, session0_.session_description as session_2_1_, session0_.session_length as session_3_1_, session0_.session_name as session_4_1_ from sesssions session0_ [42102-200]
