@@ -26,7 +26,7 @@ public class SpeakersController {
 
     @GetMapping
     @RequestMapping("{id}")
-    public Optional<Speaker> get(@PathVariable Long id){
-        return speakerRepository.findById(id);
+    public Speaker get(@PathVariable Long id){
+        return speakerRepository.getById(id);
     }
 }
